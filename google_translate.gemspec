@@ -1,24 +1,29 @@
-Gem::Specification.new do |spec|
-  spec.author = 'Elise Huard'
-  spec.email = 'googletranslate@elisehuard.be'
-  spec.homepage = 'http://github.com/elisehuard/google_translate'
+# -*- encoding: utf-8 -*-
 
-  spec.name = 'google_translate'
-  spec.version = '0.0.1'
-  spec.date = "21-01-2009"
+Gem::Specification.new do |s|
+  s.name = %q{google_translate}
+  s.version = "0.0.1"
 
-  spec.has_rdoc = true
-  spec.summary = "google translate api for Ruby"
-  
-  spec.require_path = ["lib"]
-  spec.files = ['lib/google_translate.rb',
-                'lib/google_translate/exceptions.rb',
-                'lib/google_translate/languages.rb',
-                'lib/google_translate/parsed_response.rb',
-                'lib/google_translate/translator.rb',
-                'lib/google_translate/language_detect.rb']
-  spec.test_files = ['spec/spec_helper.rb',
-                     'spec/translate_spec.rb']
+  s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
+  s.authors = ["Elise Huard"]
+  s.date = %q{2009-01-21}
+  s.description = %q{Google Translate Ruby API - based on google documentation}
+  s.email = %q{googletranslate@elisehuard.be}
+  s.files = ["lib/google_translate", "lib/google_translate/exceptions.rb", "lib/google_translate/language_detect.rb", "lib/google_translate/languages.rb", "lib/google_translate/parsed_response.rb", "lib/google_translate/translator.rb", "lib/google_translate.rb", "spec/spec_helper.rb", "spec/translate_spec.rb"]
+  s.has_rdoc = true
+  s.homepage = %q{http://github.com/elisehuard/google_translate}
+  s.rdoc_options = ["--inline-source", "--charset=UTF-8"]
+  s.require_paths = ["lib"]
+  s.rubygems_version = %q{1.3.1}
+  s.summary = %q{Google Translate Ruby API}
 
-  spec.add_dependency('json', ["> 1.1.2"])
+  if s.respond_to? :specification_version then
+    current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
+    s.specification_version = 2
+
+    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    else
+    end
+  else
+  end
 end
