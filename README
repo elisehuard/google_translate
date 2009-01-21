@@ -43,6 +43,7 @@ TODO
 ======
 * It's not mandatory, but they ask for an API key to be included.  This could be added later on if required, preferrably in a YAML style config file.
 * handle untranslateable strings
+* maybe introduce some light caching for translation to avoid requests
 
 Look at specs for behaviour.
 
