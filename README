@@ -1,0 +1,25 @@
+google translate API
+This is based on the documentation found here
+http://code.google.com/apis/ajaxlanguage/documentation/#Versioning
+look for the paragraph 'Flash and other Non-Javascript Environments'
+
+HOWTO
+======
+include module GoogleTranslate (or use it as namespace, as required)
+translate:
+translator = Translator.new("en","fr") # so several translations can be performed with this new object
+result = translator.translate("nice day today") # returns "belle journée aujourd'hui"
+
+language detection:
+detector = LanguageDetect.new
+language = detector.detect("il fait beau aujourd'hui") # returns "fr"
+
+
+TODO
+======
+* It's not mandatory, but they ask for an API key to be included.  This could be added later on if required, preferrably in a YAML style config file.
+* handle untranslateable strings
+
+Look at specs for behaviour.
+
+Suggestions are welcome !
