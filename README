@@ -3,6 +3,12 @@ This is based on the documentation found here
 http://code.google.com/apis/ajaxlanguage/documentation/#Versioning
 look for the paragraph 'Flash and other Non-Javascript Environments'
 
+INSTALL
+========
+include the github source in your Rubygem sources (see http://gems.github.com/)
+to install the gem
+sudo gem install elisehuard-google_translate
+
 HOWTO
 ======
 include module GoogleTranslate (or use it as namespace, as required)
