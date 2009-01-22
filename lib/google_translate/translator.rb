@@ -56,7 +56,7 @@ module GoogleTranslate
       super(string)      
       # here we unescape html escaped characters BUT if it's required to keep html format,
       # an extra option should be added
-      @translation = @json['responseData']['translatedText'] if @json['responseData']
+      @translation = @response_data['translatedText'] if @response_data
     end
   end
 end

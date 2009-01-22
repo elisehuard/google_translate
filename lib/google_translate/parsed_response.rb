@@ -3,9 +3,10 @@ module GoogleTranslate
   class ParsedResponse
     attr_reader :status, :details
     def initialize(string)
-      @json = JSON.parse(string)
-      @status = @json['responseStatus']
-      @details = @json['responseDetails']
+      json = JSON.parse(string)
+      @status = json['responseStatus']
+      @details = json['responseDetails']
+      @response_data = json['responseData']
     end
   end
 end

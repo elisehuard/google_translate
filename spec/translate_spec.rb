@@ -1,7 +1,4 @@
 require File.dirname(__FILE__) + '/spec_helper'
-require 'google_translate'
-
-include GoogleTranslate
 
 describe GoogleTranslate, 'translate' do
   it "should raise an error if the from language is missing or doesn't exist" do
@@ -42,26 +39,5 @@ describe GoogleTranslate, 'translate' do
     translator = Translator.new('en','fr')
     result = translator.translate("nice day today", :html => true)
     result.should be == "belle journée aujourd&#39;hui"
-  end
-end
-
-describe GoogleTranslate, 'detect' do
-  it "should detect the language of a string" do
-    detect = LanguageDetect.new
-    detect.detect("il fait beau aujourd'hui").should be == "fr"
-  end
-   
-  it "should raise an error if no string" do
-    detect = LanguageDetect.new
-    lambda {
-      detect.detect(nil)
-    }.should raise_error(NoGivenString)
-  end
-  
-  it "should raise an error if language not recognized" do
-    detect = LanguageDetect.new
-    lambda {
-      detect.detect("bliiiioaarg oqsdkqsdf")
-    }.should raise_error(UnreliableDetection)
   end
 end

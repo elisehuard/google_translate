@@ -1,13 +1,12 @@
 module GoogleTranslate
   # manage language detection based on a given string of text
   # <b>how to use</b>:
-  #   detector = LanguageDetect.new<br/>
-  #   language = detector.detect("il fait beau aujourd'hui") # returns "fr"
+  #   language = LanguageDetect.detect("il fait beau aujourd'hui") # returns "fr"
   class LanguageDetect
     SERVICE = "detect?v=#{VERSION}&q="
     
     # detect the language of a given text.
-    def detect(text)
+    def self.detect(text)
       raise NoGivenString if text.nil?
       
       request = URL_STRING + SERVICE + CGI.escape(text)
@@ -33,9 +32,9 @@ module GoogleTranslate
     attr_reader :language, :is_reliable, :confidence
     def initialize(string)
       super(string)      
-      @language = @json['responseData']['language']
-      @is_reliable = @json['responseData']['isReliable']
-      @confidence = @json['confidence']
+      @language = @response_data['language']
+      @is_reliable = @response_data['isReliable']
+      @confidence = @response_data['confidence']
     end
   end
 end
