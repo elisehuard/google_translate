@@ -1,8 +1,5 @@
 module GoogleTranslate
   
-  URL_STRING = "http://ajax.googleapis.com/ajax/services/language/"
-  VERSION = "1.0"
-  
   # Invalid language (or more specifically not one in existing list)
   class InvalidLanguage < Exception
   end

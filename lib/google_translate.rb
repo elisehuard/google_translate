@@ -10,10 +10,13 @@ require 'json'
 #
 # look at the Translator and LanguageDetect class (or README file) for instructions
 module GoogleTranslate
+  URL_STRING = "http://ajax.googleapis.com/ajax/services/language/"
+  VERSION = "1.0"
 end
 
 require 'google_translate/exceptions'
 require 'google_translate/languages'
 require 'google_translate/parsed_response'
+require 'google_translate/api_call'
 require 'google_translate/translator'
 require 'google_translate/language_detect'

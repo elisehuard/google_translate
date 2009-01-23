@@ -4,6 +4,8 @@ module GoogleTranslate
   #   translator = Translator.new("en","fr") # so several translations can be performed with this new object
   #   result = translator.translate("nice day today") # returns "belle journée aujourd'hui"
   class Translator
+    include ApiCall
+    
     SERVICE = "translate?v=#{VERSION}&langpair="
     TEXT_PAR = "&q="
 
@@ -20,27 +22,9 @@ module GoogleTranslate
     # - html: if html encoding is desirable (for immediate display on a web page for instance) 
     #           then this option needs to have a true value (:html => true)
     def translate(text, options = {})
-      raise NoGivenString if text.nil?
-      
-      request = URL_STRING + SERVICE + @from + "%7C" + @to + TEXT_PAR + CGI.escape(text)
-      response = ''
-      open(request) { |f|
-        response = f.read
-      }
-      raise GoogleUnavailable if response.nil? || response == ""
-      
-      parsed = TranslationResponse.new(response)
-      raise GoogleException, parsed.details if parsed.status != 200 # success
-      
-      if options[:html]
-        translation = parsed.translation
-      else
-        translation = CGI.unescapeHTML(parsed.translation)
-      end
+      response = google_api_call(text,"#{SERVICE}#{@from}%7C#{@to}#{TEXT_PAR}",TranslationResponse)
+      translation = options[:html] ? response.translation : CGI.unescapeHTML(response.translation)
       translation # return value
-      
-    rescue OpenURI::HTTPError
-      raise GoogleUnavailable
     end
 
   private

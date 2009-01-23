@@ -3,27 +3,14 @@ module GoogleTranslate
   # <b>how to use</b>:
   #   language = LanguageDetect.detect("il fait beau aujourd'hui") # returns "fr"
   class LanguageDetect
+    extend ApiCall
     SERVICE = "detect?v=#{VERSION}&q="
     
     # detect the language of a given text.
     def self.detect(text)
-      raise NoGivenString if text.nil?
-      
-      request = URL_STRING + SERVICE + CGI.escape(text)
-      response = ''
-      open(request) { |f|
-        response = f.read
-      }
-      raise GoogleUnavailable if response.nil? || response == ""
-      
-      parsed = DetectResponse.new(response)
-      raise GoogleException, parsed.details if parsed.status != 200
-      raise UnreliableDetection if !parsed.is_reliable
-      
-      parsed.language # return value
-      
-    rescue OpenURI::HTTPError
-      raise GoogleUnavailable
+      response = google_api_call(text,"#{SERVICE}",DetectResponse)   
+      raise UnreliableDetection if !response.is_reliable  
+      response.language # return value
     end
   end
   
